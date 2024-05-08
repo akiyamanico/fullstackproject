@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +33,9 @@ function Login() {
         username: "",
         password: "",
       });
-      alert("Form submitted successfully!");
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      navigate("/");
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to submit form. Please try again later.");
@@ -40,7 +44,7 @@ function Login() {
 
   return (
     <>
-      <div className="container max-w-2xl p-5 bg-white rounded-md border border-gray-300 flex flex-col justify-center items-center absolute-center-0">
+     <div className="container max-w-2xl p-5 bg-white rounded-md border border-gray-300 flex flex-col justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <h2 className="font-timesnow text-1xl mb-2">Welcome Back!</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

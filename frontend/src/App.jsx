@@ -13,10 +13,9 @@ import Register from "./Pages/Register/Register.jsx";
 function App() {
     return (
         <Router>
-            <Navbar/>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/Register" element={<Register />} />
+                <Route path="/" element={<><Navbar></Navbar><Home></Home></> } />
+                <Route path="/Register" element={<><Navbar /><Register /></>} />
                 <Route path="/Login" element={<Login />} />
             </Routes>
         </Router>
