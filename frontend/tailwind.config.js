@@ -9,6 +9,7 @@ module.exports = {
         automali: ['"Automali"', "sans-serif"],
         callingstone: ['"Callingstone"', "sans-serif"],
         louis: ['"Louis George Cafe"', "sans-serif"],
+        timesnow: ['"TimesNow"', "sans-serif"],
       },
     },
   },
