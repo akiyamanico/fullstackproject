@@ -1,3 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Automali";
+  src: url("../public/fonts/Automali.ttf");
+}
+
+@font-face {
+  font-family: "Callingstone";
+  src: url("../public/fonts/Callingstone.ttf");
+}
+
+@font-face {
+  font-family: "Louis George Cafe";
+  src: url("../public/fonts/Louis\ George\ Cafe.ttf");
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +30,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
