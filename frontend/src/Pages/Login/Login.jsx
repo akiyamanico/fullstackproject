@@ -7,6 +7,9 @@ function Login() {
     password: "",
   });
   const navigate = useNavigate();
+  
+  const [loading, setLoading] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,6 +21,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch("http://localhost:3001/api/users/login", {
         method: "POST",
@@ -27,7 +31,7 @@ function Login() {
         body: JSON.stringify(formData),
       });
       if (!response.ok) {
-        throw new Error("Failed to submit form");
+        throw setErrorModal(true);
       }
       setFormData({
         username: "",
@@ -38,8 +42,9 @@ function Login() {
       navigate("/");
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to submit form. Please try again later.");
+      setErrorModal(true);
     }
+    setLoading(false);
   };
 
   return (
@@ -86,10 +91,23 @@ function Login() {
               type="submit"
               className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
             >
-              Login
+              {loading ? "Mohon Tunggu" : "Login"}
             </button>
           </div>
         </form>
+        {errorModal && (
+        <div className="fixed inset-0 flex justify-center items-center">
+          <div className="bg-white p-8 rounded-md">
+            <p className="text-red-500 text-center">Gagal Login!</p>
+            <button
+              onClick={() => setErrorModal(false)}
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       </div>
     </>
   );

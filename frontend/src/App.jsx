@@ -8,13 +8,14 @@ import Home from "./Pages/Home.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Navbar from "./Pages/Components/Navbar.jsx";
 import Register from "./Pages/Register/Register.jsx";
+import Stars from "./Pages/Background/Stars.jsx";
 
  
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<><Navbar></Navbar><Home></Home></> } />
+                <Route path="/" element={<><Navbar></Navbar><Home></Home><Stars/></> } />
                 <Route path="/Register" element={<><Navbar /><Register /></>} />
                 <Route path="/Login" element={<Login />} />
             </Routes>
